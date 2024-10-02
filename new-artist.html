@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en-CA">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Ahram Lee" />
+    <title>Request New Artist</title>
+    <link rel="stylesheet" href="./css/water.css" />
+    <link rel="stylesheet" href="./css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+    <header>
+      <h1>Request a New Artist</h1>
+    </header>
+
+    <main>
+      <!-- New Artist Request Form -->
+      <form id="newArtistForm" action="https://httpbin.org/post" method="POST">
+        <label for="artistName">Artist's Name:</label>
+        <input type="text" id="artistName" name="artistName" required>
+
+        <label for="genre">Music Genre:</label>
+        <input list="genres" id="genre" name="genre">
+        <datalist id="genres">
+          <option value="Pop">
+          <option value="Rock">
+          <option value="Hip-Hop">
+          <option value="Jazz">
+          <option value="Classical">
+          <option value="Electronic">
+          <option value="Reggae">
+          <option value="Country">
+          <option value="R&B">
+          <option value="Metal">
+        </datalist>
+
+        <label for="socialMedia">Social Media URLs:</label>
+        <input type="url" id="socialMedia" name="socialMedia[]">
+
+        <label for="songs">Example Songs/Videos:</label>
+        <div id="songs">
+          <input type="url" name="song[]">
+        </div>
+        <button type="button" onclick="addSongField()">Add</button>
+
+        <label>
+          <input type="checkbox" name="explicitLyrics">
+          Explicit Lyrics
+        </label>
+
+        <div style="clear: both;"></div>
+
+        <label for="reason">Reason to Add:</label>
+        <textarea id="reason" name="reason" required></textarea>
+
+        <button type="submit">Submit</button>
+      </form>
+    </main>
+
+    <script>
+      function addSongField() {
+        const songsDiv = document.getElementById('songs');
+        const newField = document.createElement('input');
+        newField.setAttribute('type', 'url');
+        newField.setAttribute('name', 'song[]');
+        songsDiv.appendChild(newField);
+      }
+    </script>
+  </body>
+</html>
